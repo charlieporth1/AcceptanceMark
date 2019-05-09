@@ -27,7 +27,7 @@ enum ArgumentType {
         case "--version":
             self = .printVersion
         default:
-            self = argument.characters.first == "-" ? .unknown(argument: argument) : .value(argument: argument)
+            self = argument.first == "-" ? .unknown(argument: argument) : .value(argument: argument)
         }
     }
 }
@@ -46,7 +46,7 @@ struct Arguments {
         // absolute file path
         let idx = inputFile.index(inputFile.startIndex, offsetBy: 2)
         let firstTwo = inputFile.substring(to: idx)
-        if inputFile.characters.first == "/" || firstTwo == "~/" {
+        if inputFile.first == "/" || firstTwo == "~/" {
             return inputFile
         }
             // relative file path
@@ -65,7 +65,7 @@ struct Arguments {
         var printVersion = false
 
         var previousArg: ArgumentType?
-        for argument in arguments where argument.characters.count > 0 {
+        for argument in arguments where argument.count > 0 {
             
             let currentArg = ArgumentType(argument: argument)
             if case .printVersion = currentArg {

@@ -140,10 +140,10 @@ class MarkdownTableParser: NSObject {
 
     private func errorForTable(line: String) -> MarkdownTableParserError? {
         
-        guard let first = line.characters.first, first == "|" else {
+        guard let first = line.first, first == "|" else {
             return .missingStartPipe(line: line)
         }
-        guard let last = line.characters.last, last == "|" else {
+        guard let last = line.last, last == "|" else {
             return .missingEndPipe(line: line)
         }
         return nil
@@ -155,7 +155,7 @@ class MarkdownTableParser: NSObject {
         
         var inputs: [String] = []
         var outputs: [String] = []
-        if let ioSeparatorIndex = values.index(of: "") {
+        if let ioSeparatorIndex = values.firstIndex(of: "") {
             // [ i, |, o ]. separator = 1
             inputs = Array(values.dropLast(values.count - ioSeparatorIndex))
             outputs = Array(values.dropFirst(ioSeparatorIndex + 1))

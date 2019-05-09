@@ -30,7 +30,7 @@ enum MarkdownLineType {
     case other
     
     init(line: String) {
-        if let first = line.characters.first {
+        if let first = line.first {
             if first == "#" {
                 self = .heading
             }

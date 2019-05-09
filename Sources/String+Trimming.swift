@@ -13,7 +13,7 @@ import Foundation
 extension String {
     func filteredAlphanumericCharacters() -> String {
         
-        return String(self.characters.filter { String($0).rangeOfCharacter(from: CharacterSet.alphanumerics) != nil })
+        return String(self.filter { String($0).rangeOfCharacter(from: CharacterSet.alphanumerics) != nil })
     }
     
     func trimmedNonAlphanumericCharacters() -> String {
